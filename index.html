@@ -14,12 +14,34 @@
     <!-- Navbar with link to high scores and countdown -->
     <nav class="navbar navbar-light bg-light">
         <a href="assets/high-scores.html" class="navbar-brand">High Scores</a>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <span class="form-inline">
+          <h2 class="time"></h2>
+        </span>
     </nav>
     
+    <script>
+        // timer in the navbar
+        var timeEl = document.querySelector(".time");
+
+        var secondsLeft = 75;
+
+        function setTime() {
+        var timerInterval = setInterval(function() {
+            secondsLeft--;
+            timeEl.textContent = secondsLeft;
+
+            if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            /// need the game over message here
+            sendMessage();
+            }
+
+        }, 1000);
+        }
+
+        /// add click event to start the game and the timer
+        setTime()
+    </script>
 
 </body>
 </html>
