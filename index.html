@@ -65,8 +65,7 @@
         const card = document.getElementById('welcomeCard')
         // writing the buildQuiz function
         function buildQuiz(quizQ){
-            console.log(quizQ)
-            var firstQuestion = document.createElement("div");
+           
             // var question1text = document.create(quizQ.question)
             card.innerHTML = `
                 <div>${quizQ.question}</div>
@@ -76,20 +75,22 @@
                 <button class="answerBtn">${quizQ.choice4}</button>
             `
             var userSelection = document.getElementsByClassName("answerBtn")
-            console.log(userSelection[0])
             for(var i=0; i < userSelection.length; i++){
                 userSelection[i].addEventListener("click", function(event){
+                   if(event.target.innerText == quizQ.answer){
+
+                   }else{
+                    secondsLeft -= 10
+                   }
                    questionIndex++
-                   buildQuiz(quizQuestions[questionIndex]) 
+                   // console.log(event.target.innerText)
+                   buildQuiz(quizQuestions[questionIndex])
+                   
                 })
             }
-
-            // userSelection.addEventListener("click",function(event){
-            //     console.log(event.target)
-            // })
+          
             
-            // firstQuestion.appendChild(question1text)
-            quizContainer.append(firstQuestion)
+            
         }
         // array of quiz questions as objects 
         var quizQuestions = [
@@ -108,6 +109,14 @@
             choice3: "parentheses",
             choice4: "square brackets",
             answer: "curley brackets"
+        },
+        {
+            question: "color of the sky", 
+            choice1: "blue",
+            choice2: "grey",
+            choice3: "yellow",
+            choice4: "black",
+            answer: "blue"
         },
         ]
         
