@@ -21,7 +21,7 @@
     
     <div id="quiz">
         <!-- Card with welcome screen -->
-        <div class="card mx-auto m-3" style="width: 500px;">
+        <div id="welcomeCard" class="card mx-auto m-3" style="width: 500px;">
             <img src="https://cdn.pixabay.com/photo/2016/11/18/18/37/programming-1836330_960_720.png" class="card-img-top" alt="coding image">
             <div class="card-body">
             <h3 class="card-title text-center" >Beginner Coding Quiz Challenge</h3>
@@ -41,7 +41,7 @@
         var timeEl = document.querySelector(".time");
         var secondsLeft = 75;
 
-        function setTime() {
+        function startQuiz() {
         var timerInterval = setInterval(function() {
             secondsLeft--;
             timeEl.textContent = secondsLeft;
@@ -52,23 +52,62 @@
             sendMessage();
             }
         }, 1000);
+
+        for(var i = 0; i < quizQuestions.length; i++){
+           buildQuiz(quizQuestions[i]) 
         }
+        }
+
         // creating the quiz container to have slides show up for next question
         const quizContainer = document.getElementById('quiz');
-        function buildQuiz(){
-
+        // grabbing the card element 
+        const card = document.getElementById('welcomeCard')
+        // writing the buildQuiz function
+        function buildQuiz(quizQ){
+            console.log(quizQ)
+            var firstQuestion = document.createElement("div");
+            // var question1text = document.create(quizQ.question)
+            card.innerHTML = `
+                <div>${quizQ.question}</div>
+                <button>${quizQ.choice1}</button>
+                <button>${quizQ.choice2}</button>
+                <button>${quizQ.choice3}</button>
+                <button>${quizQ.choice4}</button>
+                
+            `
+            // firstQuestion.appendChild(question1text)
+            quizContainer.append(firstQuestion)
         }
+        // array of quiz questions as objects 
+        var quizQuestions = [
+        {
+            question: "Commonly used data types DO NOT include:", 
+            choice1: "strings",
+            choice2: "booleans",
+            choice3: "alerts",
+            choice4: "numbers",
+            answer: "booleans"
+        },
+        {
+            question: "What color is the sky", 
+            choice1: "grey",
+            choice2: "blue",
+            choice3: "green",
+            choice4: "yellow",
+            answer: "blue"
+        },
+        ]
+        
+        
+        
         /// add click event to start the game and the timer
         var startQuizBtn = document.getElementById("start-quiz");
-        startQuizBtn.addEventListener("click", setTime)
+        startQuizBtn.addEventListener("click", startQuiz)
         
        
         
 
-        // array of quiz questions as objects 
-         var quizQuestions = [
-
-         ]
+        
     </script>
 
 </body>
