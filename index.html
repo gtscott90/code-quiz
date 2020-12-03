@@ -40,8 +40,9 @@
         // timer in the navbar
         var timeEl = document.querySelector(".time");
         var secondsLeft = 75;
-
+        var questionIndex = 0;
         function startQuiz() {
+        // timer
         var timerInterval = setInterval(function() {
             secondsLeft--;
             timeEl.textContent = secondsLeft;
@@ -53,9 +54,9 @@
             }
         }, 1000);
 
-        for(var i = 0; i < quizQuestions.length; i++){
-           buildQuiz(quizQuestions[i]) 
-        }
+        //for(var i = 0; i < quizQuestions.length; i++){
+           buildQuiz(quizQuestions[questionIndex]) 
+        
         }
 
         // creating the quiz container to have slides show up for next question
@@ -69,12 +70,24 @@
             // var question1text = document.create(quizQ.question)
             card.innerHTML = `
                 <div>${quizQ.question}</div>
-                <button>${quizQ.choice1}</button>
-                <button>${quizQ.choice2}</button>
-                <button>${quizQ.choice3}</button>
-                <button>${quizQ.choice4}</button>
-                
+                <button class="answerBtn">${quizQ.choice1}</button>
+                <button class="answerBtn">${quizQ.choice2}</button>
+                <button class="answerBtn">${quizQ.choice3}</button>
+                <button class="answerBtn">${quizQ.choice4}</button>
             `
+            var userSelection = document.getElementsByClassName("answerBtn")
+            console.log(userSelection[0])
+            for(var i=0; i < userSelection.length; i++){
+                userSelection[i].addEventListener("click", function(event){
+                   questionIndex++
+                   buildQuiz(quizQuestions[questionIndex]) 
+                })
+            }
+
+            // userSelection.addEventListener("click",function(event){
+            //     console.log(event.target)
+            // })
+            
             // firstQuestion.appendChild(question1text)
             quizContainer.append(firstQuestion)
         }
@@ -89,12 +102,12 @@
             answer: "booleans"
         },
         {
-            question: "What color is the sky", 
-            choice1: "grey",
-            choice2: "blue",
-            choice3: "green",
-            choice4: "yellow",
-            answer: "blue"
+            question: "The condition in an if/else statement is enclosed within ____", 
+            choice1: "quotes",
+            choice2: "curly brackets",
+            choice3: "parentheses",
+            choice4: "square brackets",
+            answer: "curley brackets"
         },
         ]
         
