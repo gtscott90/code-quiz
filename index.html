@@ -31,7 +31,7 @@
             <li class="list-group-item">Are you ready?</li>
             </ul>
             <div class="card-body" style="text-align: center;">
-            <button id="start-quiz" type="button" class="btn btn-info" onclick="setTime()">Start Quiz</button>
+            <button id="start-quiz" type="button" class="btn btn-info">Start Quiz</button>
             </div>
         </div>
     </div>
@@ -59,8 +59,8 @@
 
         }
         /// add click event to start the game and the timer
-        var startQuizBtn = document.getElementById("#start-quiz");
-        startQuizBtn.addEventListener("click", setTime())
+        var startQuizBtn = document.getElementById("start-quiz");
+        startQuizBtn.addEventListener("click", setTime)
         
        
         
