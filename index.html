@@ -15,7 +15,7 @@
     <nav class="navbar navbar-light bg-light">
         <a href="assets/high-scores.html" class="navbar-brand">High Scores</a>
         <span class="form-inline">
-          <h2 class="time"></h2>
+          <h4 class="time"></h4><h4 style="margin-left: 5px;">Seconds Remaining</h4>
         </span>
     </nav>
     
@@ -24,7 +24,7 @@
         <img src="https://cdn.pixabay.com/photo/2016/11/18/18/37/programming-1836330_960_720.png" class="card-img-top" alt="coding image">
         <div class="card-body">
           <h3 class="card-title text-center" >Beginner Coding Quiz Challenge</h3>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Try to anwer the following coding questions before the time runs out. Be careful, each incorrect answer reduces your time by 10 seconds!</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Cras justo odio</li>
@@ -41,7 +41,6 @@
     <script>
         // timer in the navbar
         var timeEl = document.querySelector(".time");
-
         var secondsLeft = 75;
 
         function setTime() {
