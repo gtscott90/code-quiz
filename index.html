@@ -19,24 +19,22 @@
         </span>
     </nav>
     
-    <!-- Card with welcome screen -->
-    <div class="card mx-auto m-3" style="width: 500px;">
-        <img src="https://cdn.pixabay.com/photo/2016/11/18/18/37/programming-1836330_960_720.png" class="card-img-top" alt="coding image">
-        <div class="card-body">
-          <h3 class="card-title text-center" >Beginner Coding Quiz Challenge</h3>
-          <p class="card-text">Try to anwer the following coding questions before the time runs out. Be careful, each incorrect answer reduces your time by 10 seconds!</p>
+    <div id="quiz">
+        <!-- Card with welcome screen -->
+        <div class="card mx-auto m-3" style="width: 500px;">
+            <img src="https://cdn.pixabay.com/photo/2016/11/18/18/37/programming-1836330_960_720.png" class="card-img-top" alt="coding image">
+            <div class="card-body">
+            <h3 class="card-title text-center" >Beginner Coding Quiz Challenge</h3>
+            <p class="card-text">Try to anwer the following coding questions before the time runs out. Be careful, each incorrect answer reduces your time by 10 seconds!</p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">Are you ready?</li>
+            </ul>
+            <div class="card-body" style="text-align: center;">
+            <button id="start-quiz" type="button" class="btn btn-info" onclick="setTime()">Start Quiz</button>
+            </div>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-      </div>
-
+    </div>
 
     <script>
         // timer in the navbar
@@ -53,12 +51,24 @@
             /// need the game over message here
             sendMessage();
             }
-
         }, 1000);
         }
+        // creating the quiz container to have slides show up for next question
+        const quizContainer = document.getElementById('quiz');
+        function buildQuiz(){
 
+        }
         /// add click event to start the game and the timer
-        setTime()
+        var startQuizBtn = document.getElementById("#start-quiz");
+        startQuizBtn.addEventListener("click", setTime())
+        
+       
+        
+
+        // array of quiz questions as objects 
+         var quizQuestions = [
+
+         ]
     </script>
 
 </body>
