@@ -86,6 +86,7 @@
                    
                    if(questionIndex == quizQuestions.length){
                        endGame()
+                       timeEl = secondsLeft
                    }else {buildQuiz(quizQuestions[questionIndex])}
                 })
             }
@@ -96,9 +97,11 @@
             // button to back to home
         }
         function endGame(){
+            
             card.innerHTML =`
                 <div>Your final score is ${secondsLeft}</div>
             `
+            
         } // timer is stopped
             // time is displayed form comes up to enter initials
         // array of quiz questions as objects 
