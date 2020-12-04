@@ -39,7 +39,7 @@
     <script>
         // timer in the navbar
         var timeEl = document.querySelector(".time");
-        var secondsLeft = 75;
+        var secondsLeft = 5;
         var questionIndex = 0;
         function startQuiz() {
         // timer
@@ -48,25 +48,21 @@
             timeEl.textContent = secondsLeft;
 
             if(secondsLeft === 0) {
+            // cuts the interval off at 0
             clearInterval(timerInterval);
             /// need the game over message here
             sendMessage();
             }
         }, 1000);
-
-        //for(var i = 0; i < quizQuestions.length; i++){
-           buildQuiz(quizQuestions[questionIndex]) 
-        
+        buildQuiz(quizQuestions[questionIndex]) 
         }
-
-        // creating the quiz container to have slides show up for next question
-        const quizContainer = document.getElementById('quiz');
+        function sendMessage(){
+            alert("Game Over! Enter your score")
+        }
         // grabbing the card element 
         const card = document.getElementById('welcomeCard')
         // writing the buildQuiz function
         function buildQuiz(quizQ){
-           
-            // var question1text = document.create(quizQ.question)
             card.innerHTML = `
                 <div>${quizQ.question}</div>
                 <button class="answerBtn">${quizQ.choice1}</button>
@@ -85,11 +81,14 @@
                    questionIndex++
                    // console.log(event.target.innerText)
                    buildQuiz(quizQuestions[questionIndex])
+                   if(questionIndex == quizQuestions.length){
+                       sendMessage()
+                   }
                    
                 })
             }
           
-            
+            // if you get to the last question and you click on the button what happens!
             
         }
         // array of quiz questions as objects 
