@@ -10,7 +10,7 @@ Each time the user selects an incorrect answer their time left decreases by 10 s
 
 ### Screenshots
 #### Initial welcome when opening the website:
-![Welcomet](./assets/Images/welcomepage.png)
+![Welcome](./assets/welcomepage.png)
 #### First Questions with timer running:
 ![First Question](./assets/question1.png)
 #### Local Storage
