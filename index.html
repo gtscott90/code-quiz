@@ -41,6 +41,7 @@
         var timeEl = document.querySelector(".time");
         var secondsLeft = 75;
         var questionIndex = 0;
+        var submitBtn;
         function startQuiz() {
         // timer
         var timerInterval = setInterval(function() {
@@ -79,31 +80,48 @@
                    }else{
                     secondsLeft -= 10
                    }
-                   //2
+                   
                    questionIndex++
-                   //3
                    
                    
+                   // if you get to the last question and you click on the button what happens!
                    if(questionIndex == quizQuestions.length){
                        endGame()
+                       // timer stops
                        timeEl = secondsLeft
                    }else {buildQuiz(quizQuestions[questionIndex])}
                 })
             }
-            // if you get to the last question and you click on the button what happens!
+            
             
             // when form is entered the score with initials is displayed 
             // initials and score stored in local storage
             // button to back to home
         }
         function endGame(){
-            
+            // time is displayed form comes up to enter initials
             card.innerHTML =`
                 <div>Your final score is ${secondsLeft}</div>
+                
+                    <h1="fname">Enter Your Initials:</h1><br>
+                    <input type="text" id="initials"><br>
+                    <button id="submit">Submit</button>
+                
             `
-            
-        } // timer is stopped
-            // time is displayed form comes up to enter initials
+        
+      submitBtn = document.getElementById("submit")
+        console.log("This is the submit button", submitBtn)
+        submitBtn.addEventListener("click", function(){
+
+
+       //document.getElementById("initials").value = this should grab the value of the user input on submit
+            console.log("ARE YOU WORKING??")
+            alert("Thanks for playing!")
+        })
+    }
+
+     
+
         // array of quiz questions as objects 
         var quizQuestions = [
         {
@@ -137,8 +155,10 @@
         /// add click event to start the game and the timer
         var startQuizBtn = document.getElementById("start-quiz");
         startQuizBtn.addEventListener("click", startQuiz)
-        
+      
        
+      
+        
         
 
         
