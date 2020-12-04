@@ -114,8 +114,9 @@
         submitBtn.addEventListener("click", function(){
 
 
-       //document.getElementById("initials").value = this should grab the value of the user input on submit
-            console.log("ARE YOU WORKING??")
+        var initials = document.getElementById("initials").value 
+            console.log(initials)
+            localStorage.setItem("initials", initials)
             alert("Thanks for playing!")
         })
     }
