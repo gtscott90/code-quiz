@@ -39,7 +39,7 @@
     <script>
         // timer in the navbar
         var timeEl = document.querySelector(".time");
-        var secondsLeft = 5;
+        var secondsLeft = 75;
         var questionIndex = 0;
         function startQuiz() {
         // timer
@@ -47,11 +47,12 @@
             secondsLeft--;
             timeEl.textContent = secondsLeft;
 
-            if(secondsLeft === 0) {
+            if(secondsLeft <= 0) {
             // cuts the interval off at 0
             clearInterval(timerInterval);
             /// need the game over message here
             sendMessage();
+            endGame();
             }
         }, 1000);
         buildQuiz(quizQuestions[questionIndex]) 
@@ -78,19 +79,28 @@
                    }else{
                     secondsLeft -= 10
                    }
+                   //2
                    questionIndex++
-                   // console.log(event.target.innerText)
-                   buildQuiz(quizQuestions[questionIndex])
-                   if(questionIndex == quizQuestions.length){
-                       sendMessage()
-                   }
+                   //3
                    
+                   
+                   if(questionIndex == quizQuestions.length){
+                       endGame()
+                   }else {buildQuiz(quizQuestions[questionIndex])}
                 })
             }
-          
             // if you get to the last question and you click on the button what happens!
             
+            // when form is entered the score with initials is displayed 
+            // initials and score stored in local storage
+            // button to back to home
         }
+        function endGame(){
+            card.innerHTML =`
+                <div>Your final score is ${secondsLeft}</div>
+            `
+        } // timer is stopped
+            // time is displayed form comes up to enter initials
         // array of quiz questions as objects 
         var quizQuestions = [
         {
